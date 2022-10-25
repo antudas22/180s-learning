@@ -16,11 +16,15 @@ const SideNav = () => {
     <div>
       <h2>All Category: {categories.length}</h2>
       <div>
-        {
-            categories.map(category => <p key={category.id}>
-                <Link to={`/category/${category.id}`}><Button variant="outline-primary">{category.name}</Button></Link>
-            </p>)
-        }
+        {categories.map((category) => (
+          <p key={category.id}>
+              <Link to={`/category/${category.id}`}>
+                <Button variant="outline-primary" size="lg">
+                  {category.name}
+                </Button>
+              </Link>
+          </p>
+        ))}
       </div>
     </div>
   );
