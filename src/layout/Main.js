@@ -9,7 +9,7 @@ const Main = () => {
         <div>
             <Header></Header>
             <Container>
-            <Row>
+            <Row className='gx-5'>
                 <Col lg='3' className='d-none d-lg-block'>
                     <SideNav />
                 </Col>

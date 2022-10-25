@@ -13,13 +13,13 @@ const SideNav = () => {
   }, []);
 
   return (
-    <div>
-      <h2>All Category: {categories.length}</h2>
+    <div className="text-center">
+      <h2>All Categories</h2>
       <div>
         {categories.map((category) => (
           <p key={category.id}>
               <Link to={`/category/${category.id}`}>
-                <Button variant="outline-primary" size="lg">
+                <Button className="w-100" variant="outline-primary" size="lg">
                   {category.name}
                 </Button>
               </Link>
