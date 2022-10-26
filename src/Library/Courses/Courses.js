@@ -4,13 +4,13 @@ import Course from "../Course/Course";
 import './Courses.css';
 
 const Courses = () => {
-  const courses = useLoaderData();
+  const allCourses = useLoaderData();
   return (
     <div>
       <h2>Here is Courses</h2>
       <div className="course-container">
-        {courses.map((course) => (
-          <Course key={course.id} course={course}></Course>
+        {allCourses.map((course) => (
+          <Course key={course._id} course={course}></Course>
         ))}
       </div>
     </div>
