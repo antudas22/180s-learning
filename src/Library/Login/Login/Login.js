@@ -1,63 +1,79 @@
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import React, { useContext } from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate()
 
-    const {providerLogin} = useContext(AuthContext);
-
-    const googleProvider = new GoogleAuthProvider();
-
-    const handleGoogleSignIn = () => {
-        providerLogin(googleProvider)
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
         .then(result => {
             const user = result.user;
             console.log(user);
+            form.reset();
         })
         .catch(error => console.error(error))
     }
 
-    const githubProvider = new GithubAuthProvider();
 
-    const handleGithubSignIn = () => {
-        providerLogin(githubProvider)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-        .catch(error => console.error(error))
-    }
+  const { providerLogin } = useContext(AuthContext);
 
-    return (
-        <Form>
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const githubProvider = new GithubAuthProvider();
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        
+        <Form.Control name='email' type="email" placeholder="Enter email" required/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control name="password" type="password" placeholder="Password" required/>
       </Form.Group>
-      <Form.Text className="text-muted">
-        </Form.Text>
+      <Form.Text className="text-danger"></Form.Text>
       <Button variant="primary" type="submit">
         Login
       </Button>
 
       <div className="d-grid gap-2 mt-3">
-      <Button onClick={handleGoogleSignIn} variant="primary" size="lg">
-        Login With Google
-      </Button>
-      <Button onClick={handleGithubSignIn} variant="secondary" size="lg">
-        Login With GitHub
-      </Button>
-    </div>
+        <Button onClick={handleGoogleSignIn} variant="primary" size="lg">
+          Login With Google
+        </Button>
+        <Button onClick={handleGithubSignIn} variant="secondary" size="lg">
+          Login With GitHub
+        </Button>
+      </div>
     </Form>
-    );
+  );
 };
 
 export default Login;

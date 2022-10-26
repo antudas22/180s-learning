@@ -52,8 +52,12 @@ const Header = () => {
                 </>
               ) : (
                 <>
+                <Button variant="light">
                   <Link to="/login">Login</Link>
+                </Button>
+                <Button variant="light">
                   <Link to="/register">Register</Link>
+                </Button>
                 </>
               )}
             </Nav.Link>
