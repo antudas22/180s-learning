@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import SideNav from "../SideNav/SideNav";
 import { FaUser } from "react-icons/fa";
+import './Header.css';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const Header = () => {
       className="mb-3"
     >
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand className="header-logo">
           <Link to="/">
             <h4>
               180s <span className="text-info fs-2 fw-bold">Learning</span>
@@ -36,12 +37,16 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="me-auto header-nav">
             <>
               <Link to="/">Courses</Link>
             </>
-            <Nav.Link href="#pricing">FAQ</Nav.Link>
-            <Nav.Link href="#pricing">Blog</Nav.Link>
+            <>
+                <Link to="/">FAQ</Link>
+            </>
+            <>
+                <Link>Blog</Link>
+            </>
           </Nav>
           <Nav>
             <Nav.Link>
@@ -52,10 +57,10 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                <Button variant="light">
+                <Button className="user-btn" variant="light">
                   <Link to="/login">Login</Link>
                 </Button>
-                <Button variant="light">
+                <Button className="user-btn" variant="light">
                   <Link to="/register">Register</Link>
                 </Button>
                 </>

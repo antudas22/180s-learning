@@ -1,0 +1,15 @@
+.header-logo a{
+    text-decoration: none;
+    color: black;
+}
+.header-nav a{
+    text-decoration: none;
+    color: gray;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.user-btn a{
+    text-decoration: none;
+    color: black;
+}
