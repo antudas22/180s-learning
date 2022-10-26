@@ -49,10 +49,10 @@ const Header = () => {
               <Link to="/">Courses</Link>
             </>
             <>
-                <Link to="/">FAQ</Link>
+                <Link to="">FAQ</Link>
             </>
             <>
-                <Link>Blog</Link>
+                <Link to='/blog'>Blog</Link>
             </>
           </Nav>
           <Nav>
