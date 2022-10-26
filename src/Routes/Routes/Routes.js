@@ -6,6 +6,7 @@ import Home from "../../Library/Home/Home";
 import Login from "../../Library/Login/Login/Login";
 import Register from "../../Library/Login/Register/Register";
 import PremiumAccess from "../../Library/PremiumAccess/PremiumAccess";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/premium/:id',
-                element: <PremiumAccess></PremiumAccess>,
+                element: <PrivateRoute><PremiumAccess></PremiumAccess></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/premium/${params.id}`)
             },
             {
