@@ -9,8 +9,15 @@ import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import SideNav from "../SideNav/SideNav";
 import { FaUser } from "react-icons/fa";
 import './Header.css';
+import { useState } from "react";
 
 const Header = () => {
+  const [mode, setMode] = useState(false);
+
+  const modeHandler = () => {
+    setMode(!mode);
+  }
+
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
@@ -49,6 +56,11 @@ const Header = () => {
             </>
           </Nav>
           <Nav>
+            <div>
+              <button onClick={modeHandler} className='mode-btn'>
+                {mode ? 'Light' : 'Dark'}
+              </button>
+            </div>
             <Nav.Link>
               {user?.uid ? (
                 <>
