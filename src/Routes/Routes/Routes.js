@@ -3,6 +3,8 @@ import Main from "../../layout/Main";
 import Category from "../../Library/Category/Category";
 import Courses from "../../Library/Courses/Courses";
 import Home from "../../Library/Home/Home";
+import Login from "../../Library/Login/Login/Login";
+import Register from "../../Library/Login/Register/Register";
 import PremiumAccess from "../../Library/PremiumAccess/PremiumAccess";
 
 export const routes = createBrowserRouter([
@@ -29,6 +31,14 @@ export const routes = createBrowserRouter([
                 path: '/premium/:id',
                 element: <PremiumAccess></PremiumAccess>,
                 loader: ({params}) => fetch(`http://localhost:5000/premium/${params.id}`)
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
             }
         ]
     }
