@@ -7,7 +7,7 @@ const SideNav = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/course-categories")
+    fetch("https://180s-learning-server.vercel.app/course-categories")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
@@ -18,11 +18,11 @@ const SideNav = () => {
       <div>
         {categories.map((category) => (
           <p key={category.id}>
-              <Link to={`/category/${category.id}`}>
-                <Button className="w-100" variant="outline-primary" size="lg">
-                  {category.name}
-                </Button>
-              </Link>
+            <Link to={`/category/${category.id}`}>
+              <Button className="w-100" variant="outline-primary" size="lg">
+                {category.name}
+              </Button>
+            </Link>
           </p>
         ))}
       </div>
